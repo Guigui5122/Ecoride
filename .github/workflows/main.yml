@@ -1,0 +1,30 @@
+name: CI Ecoride
+
+on:
+    push:
+        branch:
+            - main
+        pull_request:
+            branches:
+                - main
+    
+    jobs:
+        build:
+            runs-on: ubuntu-latest
+
+            steps:
+                - name: Checkout du code
+                  uses: actions/checkout@v4
+                  
+                - name: Configuration PHP
+                  uses: shivammarthur/setup-php@v2
+                  with:
+                    php-version: '8.3'  #version PHP que j'utilise
+                    extensions: pdo_mysql, mbstring #ici les extensions si nécessaire
+                    tools: composer #install Composer
+
+                - name: Installation des dépendances Composer
+                  run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+                - name: Execution des test PHPunit
+                  run: vendor/bin/phpunit 
