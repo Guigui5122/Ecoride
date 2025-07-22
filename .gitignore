@@ -1,3 +1,4 @@
+# Permet de ne pas commit les fichiers sensibles
 # Fichiers de configuration sensibles et spécifiques à l'environnement
 .env
 .env.*local
