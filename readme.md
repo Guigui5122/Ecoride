@@ -48,7 +48,7 @@ bdd : MySql
 
 ### Configuration du versionnage avec Github
    Créer un repo sur GitHub.com
-### GITBASH : 
+### GITBASH : 💻
    git clone "url_repo" (installation du repo en local)
    git init (créer le dossier .git dans le projet en local)
    git config user.name "mon_identifiant_github"
@@ -73,4 +73,16 @@ bdd : MySql
    - PSR-4
    - "tests/"
 
+### Installation des dépendances via terminal💻
+ cmd : composer install
+-> Installe les dépendances, dossier VENDOR (fournisseurs), et le fichier composer.lock
+
+## Création de la class Config (backend/src/Config/Config.php)
+servira à charger le fichier .env, à le lire, et séparer et nettoyer les données
+
+## Création de la class Database (backend/src/Config/Database.php)
+ gère une connexion unique à la base de données en utilisant le design pattern Singleton qui garantit qu'une seule instance de la classe soit créée pendant toute la durée de vie de l'application.
+
+ ⚠️Lors du passage en "prod" ne plus utiliser 'die' mais plutôt privilégier le 'throw new Exception()' avec un message neutre pour l'utilisateur. 
+ ET AJOUTER un:  error_log()
 
