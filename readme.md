@@ -41,7 +41,36 @@ back-end : PHP PDO en MVC
 front-end : HTML / CSS / JS
 bdd : MySql
 
-### création du fichier à la racine du projet : .env
-### création du fichier à la racine du projet : .htaccess (config standard = Headers de sécurité, FilesMatch)
+### Création du fichier à la racine du projet : .env
+### Création du fichier à la racine du projet : .htaccess (config standard = Headers de sécurité, FilesMatch)
 
-### création du dossier public et du fichier .htaccess/public 
+### Création du dossier public et du fichier .htaccess/public 
+
+### Configuration du versionnage avec Github
+   Créer un repo sur GitHub.com
+### GITBASH : 
+   git clone "url_repo" (installation du repo en local)
+   git init (créer le dossier .git dans le projet en local)
+   git config user.name "mon_identifiant_github"
+   git config user-email 'mon_mail"
+   git add . (ajout des fichiers)
+   git commit -m 'commit initial'
+   git remote add origin "url_repo" (créer un lien entre depot local et distant nommé Origin)
+   git branch -M main (renomme la branche Master en Main)
+   git push origin main
+
+### Création du fichier : composer.json
+   Dépendances de production :
+   - php : version 8.1 ou supérieur
+   - nikic/fast-route : pour la gestion des routes URL's
+   - vlucas/phpdotenv : gère les variables d'environnement
+   Dépendances de développement :
+   - phpunit : pour gérer les tests unitaires (framework PHPUnit)
+   Autoloader de production : 
+   -  PSR-4
+   - "src/"
+   Autoloader de dev:
+   - PSR-4
+   - "tests/"
+
+
