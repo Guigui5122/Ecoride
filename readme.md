@@ -49,15 +49,15 @@ bdd : MySql
 ### Configuration du versionnage avec Github
    Créer un repo sur GitHub.com
 ### GITBASH : 💻
-   git clone "url_repo" (installation du repo en local)
-   git init (créer le dossier .git dans le projet en local)
-   git config user.name "mon_identifiant_github"
-   git config user-email 'mon_mail"
-   git add . (ajout des fichiers)
-   git commit -m 'commit initial'
-   git remote add origin "url_repo" (créer un lien entre depot local et distant nommé Origin)
-   git branch -M main (renomme la branche Master en Main)
-   git push origin main
+   - git clone "url_repo" (installation du repo en local)
+   - git init (créer le dossier .git dans le projet en local)
+   - git config user.name "mon_identifiant_github"
+   - git config user-email 'mon_mail"
+   - git add . (ajout des fichiers)
+   - git commit -m 'commit initial'
+   - git remote add origin "url_repo" (créer un lien entre depot local et distant nommé Origin)
+   - git branch -M main (renomme la branche Master en Main)
+   - git push origin main
 
 ### Création du fichier : composer.json
    Dépendances de production :
