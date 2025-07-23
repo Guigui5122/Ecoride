@@ -90,7 +90,7 @@ CREATE TABLE reviews (
 
 
 
--- remplissage de données tests pour la Bdd Ecoride --
+-- Insertion de données tests pour la Bdd Ecoride --
 
 use ecoride_database;
 INSERT INTO users (u_lastname, u_firstname, u_pseudo, u_picture, u_email, u_adress, u_postal_code, u_city, u_dob, u_password, u_phone, u_register_date, `u_isActive`, crd_sum, crd_quantity, crd_bonus) 
@@ -158,3 +158,25 @@ VALUES
 ('2025-07-28', 'demande', 2, 20, 'pas d\'options', 7)
 ;
 
+-- Tests des requêtes de base 
+
+-- test : afficher tous les utilisateurs
+SELECT * FROM users;
+SELECT * FROM cars;
+
+-- test : afficher toutes les voitures
+INSERT INTO cars (c_brand, c_model, c_color, c_license, c_energy, c_date_license, c_owner_id) 
+VALUES 
+('RENAULT', 'TWINGO', 'JAUNE', 'AX-123-MS','Diesel', '2004-07-23', 2)
+;
+-- test : un utilisateur qui a plusieurs véhicule :
+SELECT u_pseudo, u_email, cars.* 
+FROM users
+JOIN cars ON cars.c_owner_id = users.u_id
+WHERE users.u_pseudo = 'sophiemartin';
+
+-- test : Afficher tous les utilisateurs qui ont le rôle 'Both' (conducteur et passager) : 
+SELECT u_lastname, u_firstname, role_details
+FROM users
+JOIN roles ON role_name ='Both'
+WHERE role_id=3;

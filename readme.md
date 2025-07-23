@@ -86,3 +86,22 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
  ⚠️Lors du passage en "prod" ne plus utiliser 'die' mais plutôt privilégier le 'throw new Exception()' avec un message neutre pour l'utilisateur. 
  ET AJOUTER un:  error_log()
 
+
+## MVC - Modèles Vues Controleurs
+
+
+- Création de la classe BaseModels (classe abstraite) qui sert à créer les fonctionnalités communes (fondation) aux autres modèles. Elle ne sera pas instaciable mais sera héritée par d'autres classes.
+
+/* Cette architecture favorise la réutilisabilité et la cohérence en centralisant la gestion de la connexion à la base de données dans une classe parente commune.*/
+
+@todo  
+- Puis, implémentation des différentes modeles (user, car, etc...)
+
+
+## Lecture de la documentation PHPDocs 
+   - @var est utilisé pour documenter les propriétés des Classes.
+   - @param est utilisé pour documenter les paramètres des méthodes || fonctions.
+   - @return est utilisé pour documenter les valeurs de retours des méthodes || fonctions.
+   - @throws est utilisé pour documenter les Exceptions qui peuvent être levées.
+   - @todo pour définir des Notes pour plus tard.
+   - @see pour renvoyer des Références d'autres éléments.
