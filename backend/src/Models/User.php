@@ -168,6 +168,113 @@ class User extends BaseModel
         return $this->crd_bonus;
     }
 
+    // Setters (servent à modifier les propriétés, ex: modification adresse, n° de téléphone, etc...)
+
+    // Setter pour le nom de l'utilisateur
+
+    public function setLastname(string $u_lastname): self {
+        //On vérifie si le nom de famille est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 50 caractères 
+        if(empty(trim($u_lastname)) || strlen($u_lastname) > 50){
+            throw new InvalidArgumentException("Le nom de famille saisi est invalide.");
+        }
+        $this->u_lastname = trim($u_lastname);
+        return $this;
+    }
+
+    // Setter pour le prénom de l'utilisateur
+    public function setFirstname(string $u_firstname): self {
+        //On vérifie si le prénom est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 50 caractères 
+        if(empty(trim($u_firstname)) || strlen($u_firstname) > 50){
+            throw new InvalidArgumentException("Le prénom saisi est invalide.");
+        }
+        $this->u_firstname = trim($u_firstname);
+        return $this;
+    }
+
+    // Setter pour le pseudo de l'utilisateur
+    public function setPseudo(string $u_pseudo): self {
+        //On vérifie si le pseudo est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 20 caractères 
+        if(empty(trim($u_pseudo)) || strlen($u_pseudo) > 20){
+            throw new InvalidArgumentException("Le pseudo choisi est invalide.");
+        }
+        $this->u_pseudo = trim($u_pseudo);
+        return $this;
+    }
+
+    // Setter pour l'image de profil de l'utilisateur
+    /**
+     * @param string $u_picture 
+     * Ici, la variable contient l'url d'un fichier qui sera chargé par l'utilisateur depuis son espace, (ou lors de l'inscription?)
+     * Une vérification de l'URL est faite dans le setter, pour empêcher l'injection d'url malveillante
+     * De même, sur l'extension du fichier qui sera chargé
+     */
+    public function setImageUrl(string $url): void {
+
+        //On vérifie si le champ : photo de profil est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 20 caractères 
+        if(!filter_var($url, FILTER_VALIDATE_URL)){
+            throw new InvalidArgumentException("URL du fichier invalide.");
+        }
+        // On vérifie ensuite que l'extension du fichier concerne bien une image, ou une photo
+        $availableExtensions = ['jpeg','webp', 'svg']; // seulement 3 choix car ce sont les formats les plus répandues, moins lourd et de qualités suffisantes, sauf le SVG qui est plus lourd mais utile pour le responsive
+        //strtolower - met en minuscule l'extension du fichier : JPG = jpg
+        //pathinfo — retourne des informations sur un chemin système (src php manual)
+        //parse_url - analyse l'url et extrait le 'path'
+        $extension = strtolower(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION));
+        // On verifie si l'extension est bien autorisée (présent dans $availableExtension)
+        if(!in_array($extension, $availableExtensions)) {
+            //Si non, on renvoi un message
+            throw new InvalidArgumentException('Le format du fichier n\'est pas valide');
+        }
+        $this->u_picture = $url;
+        return;        
+    }
+
+    // Setter pour l'email de l'utilisateur
+    public function setEmail(string $u_email): self {
+          if(!filter_var($u_email, FILTER_VALIDATE_EMAIL)){
+            throw new InvalidArgumentException("E-mail invalide.");
+        }
+
+        $this->u_email = trim(strtolower($u_email));
+        return $this;
+    }
+ // Setter pour le prénom de l'utilisateur
+    public function setAdress(string $u_adress): self {
+        //On vérifie si le champ : adresse est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 50 caractères 
+        if(empty(trim($u_adress)) || strlen($u_adress) > 50){
+            throw new InvalidArgumentException("L'adresse saisie est invalide.");
+        }
+        $this->u_adress = trim($u_adress);
+        return $this;
+    }
+
+ // Setter pour le code postal de l'utilisateur
+    public function setPostalCode(string $u_postal_code): self {
+        //On vérifie si le champ : code postal est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 10 caractères 
+        if(empty(trim($u_postal_code)) || strlen($u_postal_code) > 10){
+            throw new InvalidArgumentException("Le code postal saisi est invalide.");
+        }
+        $this->u_postal_code = trim($u_postal_code);
+        return $this;
+    }
+
+
+     // Setter pour la ville de l'utilisateur
+    public function setUserCity(string $u_city): self {
+        //On vérifie si le champ : Ville est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 50 caractères 
+        if(empty(trim($u_city)) || strlen($u_city) > 50){
+            throw new InvalidArgumentException("La ville saisie est invalide.");
+        }
+        $this->u_city = trim($u_city);
+        return $this;
+    }
+
+
+
+
+
+    
+
 
 
 }
