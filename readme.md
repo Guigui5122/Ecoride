@@ -94,11 +94,12 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
 
 /* Cette architecture favorise la réutilisabilité et la cohérence en centralisant la gestion de la connexion à la base de données dans une classe parente commune.*/
 
-@todo  
+**** @todo *****
+
 - Puis, implémentation des différentes modeles (user, car, etc...)
 
 
-## Lecture de la documentation PHPDocs 
+## Lecture de la documentation PHPDocs /** */
    - @var est utilisé pour documenter les propriétés des Classes.
    - @param est utilisé pour documenter les paramètres des méthodes || fonctions.
    - @return est utilisé pour documenter les valeurs de retours des méthodes || fonctions.
