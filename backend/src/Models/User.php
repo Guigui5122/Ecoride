@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use InvalidArgumentException;
-use PDO;
 
 
 class User extends BaseModel

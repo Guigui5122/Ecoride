@@ -101,10 +101,10 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
 
  -- O= Extensible sans modification
 
- -- L= Les sous-classes respectent le contrat paren
- t
+ -- L= Les sous-classes respectent le contrat parent
+
  -- I= Interfaces spécifiques
- 
+
  -- D= Dépendances d'interfaces, pas de classes concrètes
 
 **** @todo *****
@@ -112,10 +112,22 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
 - Implémentation du Model\User.php
    (définition des propriétés, des getters / setters)
 
+- Création du dossier Repositories
+   - Création du sous-dossier Interfaces
+      - Création de l'interface UserRepositoryInterface.php
+
+- Création du UserRepository
 
 
 
-## Lecture de la documentation PHPDocs /** */
+
+
+
+
+
+
+
+## NB ->>> Lecture de la documentation PHPDocs /** */
    - @var est utilisé pour documenter les propriétés des Classes.
    - @param est utilisé pour documenter les paramètres des méthodes || fonctions.
    - @return est utilisé pour documenter les valeurs de retours des méthodes || fonctions.
