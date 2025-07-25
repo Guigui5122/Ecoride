@@ -94,9 +94,25 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
 
 /* Cette architecture favorise la réutilisabilité et la cohérence en centralisant la gestion de la connexion à la base de données dans une classe parente commune.*/
 
+
+ - Réflexion sur la structure : Mettre en place les Repositories et Services : cela permet d'avoir code robuste, testable et évolutif, une séparation claire des responsabilités, et une structure qui respecte le principe SOLID :
+
+ -- S= une classe = une responsabilité
+
+ -- O= Extensible sans modification
+
+ -- L= Les sous-classes respectent le contrat paren
+ t
+ -- I= Interfaces spécifiques
+ 
+ -- D= Dépendances d'interfaces, pas de classes concrètes
+
 **** @todo *****
 
-- Puis, implémentation des différentes modeles (user, car, etc...)
+- Implémentation du Model\User.php
+   (définition des propriétés, des getters / setters)
+
+
 
 
 ## Lecture de la documentation PHPDocs /** */
