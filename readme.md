@@ -107,18 +107,21 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
 
  -- D= Dépendances d'interfaces, pas de classes concrètes
 
+
 **** @todo *****
 
 - Implémentation du Model\User.php
-   (définition des propriétés, des getters / setters)
+   (définition des propriétés, des getters / setters)✅
 
-- Création du dossier Repositories
-   - Création du sous-dossier Interfaces
-      - Création de l'interface UserRepositoryInterface.php
+- Création du dossier Repositories✅
+      - Création du sous-dossier Interfaces✅
+         - Création de l'interface UserRepositoryInterface.php✅
+   - Création du UserRepository 😢
 
-- Création du UserRepository
-
-
+- Création du dossier Services✅
+      - Création du sous-dossier Interfaces✅
+         - Création de l'interface UserServiceInterface.php✅
+   - Création du fichier UserService.php 😢
 
 
 
