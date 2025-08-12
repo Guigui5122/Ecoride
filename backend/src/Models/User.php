@@ -123,11 +123,25 @@ class User extends BaseModel
     {
         return $this->u_phone;
     }
+    
+
+    /**
+     * Récupère le mot de passe de l'utilisateur
+     * @param string $u_password sera enregistré en base automatiquement mais hashé avec la méthode ARGON2ID
+     * 
+    */
+    public function getPassword(): string
+    {
+        return $this->u_password;
+    }
+    
+    
     /**
      * Récupère la date d'inscription de l'utilisateur
      * @param \DateTimeImmutable  $u_register_date sera enregistrée en base automatiquement 
      * lors de la validation de l'inscription de l'utilisateur cela servira pour calculer l'ancienneté de l'utilisateur, et sa fidelité. 
      *  */
+
     public function getRegisterDate(): \DateTimeImmutable
     {
         return $this->u_register_date;
@@ -168,6 +182,13 @@ class User extends BaseModel
     }
 
     // Setters (servent à modifier les propriétés, ex: modification adresse, n° de téléphone, etc...)
+
+    // Setter pour l'id  - accessible seulement depuis le Repository
+    public function setId(int $u_id): void 
+    {
+        $this->u_id = $u_id;
+    }
+
 
     // Setter pour le nom de l'utilisateur
 
