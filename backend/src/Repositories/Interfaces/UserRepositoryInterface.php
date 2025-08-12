@@ -10,9 +10,9 @@ use DateTime;
 interface UserRepositoryInterface 
 {
     // Méthode
-    public function save(User $user): ?User;                            // inscription (enregistrement en bdd)
-    public function delete(int $u_id): bool;                            // suppression du compte (admin)
-    public function getRegisterDate(int $u_id): ?DateTime;              // contient la date d'inscription de l'utilisateur
+    public function save(User $user): bool;                             // inscription (enregistrement en bdd)
+    public function suspendAccount(User $user): bool;                   // suspension du compte (accessible pour l'admin)
+    public function getRegisterDate(int $u_id): ?string;              // on obtient la date d'inscription de l'utilisateur
     
 }
 
