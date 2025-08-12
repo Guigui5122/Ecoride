@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use PDO;
+use PDOException;
 
 
 
@@ -17,13 +18,29 @@ class UserRepository implements UserRepositoryInterface{
     public function __construct(PDO $pdo) {
         $this->pdo = $pdo;
     }
-/**
- * La fonction permet d'insérer un utilisateur ou de le mettre à jour
- * @param $user
- * @return bool
- * 
- */
 
+
+    /**
+     * Trouve un utilisateur par son email
+     * @return static|null l'objet user trouvé ou null
+    */
+    public function findByEmail(string $u_email): User
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE u_email= :u_email");
+        $stmt->execute([':u_email' => $u_email]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data; 
+    }
+    
+
+
+    /**
+     * La fonction permet d'insérer un utilisateur ou de le mettre à jour
+     * @param $user
+     * @return bool
+     * 
+     */
     public function save(User $user): bool
     {
         try{
@@ -54,7 +71,7 @@ class UserRepository implements UserRepositoryInterface{
                 WHERE u_id = :u_id"; 
         }
 
-            // Requête préparée : on cache les informations, on se protege des attaques SQL
+            // Requête préparée permet de cacher les informations  + protection contre les attaques SQL
         $stmt = $this->pdo->prepare($sql); 
         
         // Remplace les params
@@ -87,7 +104,7 @@ class UserRepository implements UserRepositoryInterface{
 
         return $result;
 
-        }catch(\PDOException $error){
+        }catch(PDOException $error){
         echo "La sauvegarde à échouée" . $error->getMessage();
 
         return false;
@@ -126,11 +143,34 @@ class UserRepository implements UserRepositoryInterface{
             }
             
         }catch(PDOException $error){
-            echo "Le compte n'a pas été suspendu, veuillez réésssayer " . $error->getMessage();
+            echo "Le compte n'a pas été suspendu, veuillez réésssayer." . $error->getMessage();
             return false;
         } 
     }
+
+
+/**
+ * Fonction pour récupérer la date d'inscription de l'utilisateur 
+ * @param int $u_id
+ * @return ?string 
+ * le champ 'u_register_date' est géré par la bdd en type CURRENT_TIMESTAMP définit automatiquement
+ * à l'enregistrement de l'utilisateur
+ */
+
+    public function getRegisterDate(int $u_id): ?string
+    {
+        $sql = "SELECT u_register_date FROM {$this->table} WHERE u_id = :u_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $u_id]);
+
+        $date = $stmt->fetchColumn();
+        
+        return $date ?: null;
+    }
 }
+
+
+
 
 
 

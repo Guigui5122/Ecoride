@@ -25,7 +25,7 @@ class User extends BaseModel
     // on ne met pas de setter pour la date de naissance qui ne doit pas changer !
     private string $u_phone;
     private string $u_password;
-    private \DateTimeImmutable $u_register_date; // idem pour la date d'inscription, elle est unique et ne changera pas
+    private string $u_register_date; // idem pour la date d'inscription, elle est unique et ne changera pas
     // on ne met pas de setter pour la date d'inscription qui ne doit pas changer !
     private bool $u_isActive; // propriété de type Booléen (doit être 'true' ou 'false'), ne peut-être NULL
     private int $crd_sum; // propriété de type Entier (Integer)
@@ -142,7 +142,7 @@ class User extends BaseModel
      * lors de la validation de l'inscription de l'utilisateur cela servira pour calculer l'ancienneté de l'utilisateur, et sa fidelité. 
      *  */
 
-    public function getRegisterDate(): \DateTimeImmutable
+    public function getRegisterDate(): string
     {
         return $this->u_register_date;
     }
@@ -264,7 +264,7 @@ class User extends BaseModel
         return $this;
     }
 
-    // Setter pour le prénom de l'utilisateur
+    // Setter pour l'adresse de l'utilisateur
     public function setAdress(string $u_adress): self
     {
         //On vérifie si le champ : adresse est vide (empty), après avoir supprimé les espaces (trim) OU si la longueur (strlen) dépasse 50 caractères 
@@ -319,7 +319,7 @@ class User extends BaseModel
         return $this;
     }
 
-        // Setter pour le le status du compte de l'utilisateur
+        // Setter pour  le status du compte de l'utilisateur
      public function setU_isActive($u_isActive): self
     {
         $this->u_isActive = $u_isActive;
