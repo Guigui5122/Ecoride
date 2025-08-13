@@ -124,10 +124,11 @@ servira à charger le fichier .env, à le lire, et séparer et nettoyer les donn
    - Création du fichier UserService.php 😢
 
 
+- Création du dossier Controllers
+   - création du fichier BaseController.php
+    //TODO : UserController.php
 
-
-
-
+>> IDEM pour toutes les tables/classes du projet
 
 
 ## NB ->>> Lecture de la documentation PHPDocs /** */
